@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="给 7-8 岁小朋友看的原始世界信念图文小卡。"
+    />
+    <title>我怎样看世界</title>
+    <link rel="preload" href="assets/world-beliefs-hero.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <img
+        class="hero__image"
+        src="assets/world-beliefs-hero.png"
+        alt="一位家长和一个孩子在傍晚的树影与城市边缘小路上并肩前行"
+      />
+      <div class="hero__shade"></div>
+      <nav class="topbar" aria-label="页面导航">
+        <a href="#cards">小卡</a>
+        <a href="#three-beliefs">三件事</a>
+        <button class="icon-button" id="randomCard" type="button" aria-label="随机抽一张小卡">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <rect x="5" y="5" width="14" height="14" rx="3"></rect>
+            <circle cx="9" cy="9" r="1.25"></circle>
+            <circle cx="15" cy="15" r="1.25"></circle>
+            <circle cx="15" cy="9" r="1.25"></circle>
+          </svg>
+        </button>
+      </nav>
+      <section class="hero__content" aria-labelledby="page-title">
+        <p class="eyebrow">给 7-8 岁小朋友</p>
+        <h1 id="page-title">我怎样看世界</h1>
+        <p class="hero__lead">
+          世界大体安全，也很精彩。我们可以好奇、可以犯错、可以选择，
+          也要记得边界和后果。
+        </p>
+      </section>
+    </header>
+
+    <main>
+      <section class="belief-strip" id="three-beliefs" aria-label="三个底层信念">
+        <article>
+          <img
+            class="belief-strip__photo"
+            src="assets/belief-safe.png"
+            alt="孩子在安全的公共空间里独立行走，家长在旁边保持距离"
+          />
+          <div class="belief-strip__body">
+            <span class="belief-strip__icon belief-strip__icon--safe" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M24 6 39 12v11c0 9-6.4 15.8-15 19-8.6-3.2-15-10-15-19V12l15-6Z"></path>
+                <path d="M17 24l5 5 10-11"></path>
+              </svg>
+            </span>
+            <div>
+              <h2>安全</h2>
+              <p>遇到困难时，我能找可靠的人帮忙。</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <img
+            class="belief-strip__photo"
+            src="assets/belief-wonder.png"
+            alt="孩子在图书馆和自然光里专注观察新鲜事物"
+          />
+          <div class="belief-strip__body">
+            <span class="belief-strip__icon belief-strip__icon--wonder" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M24 5v10"></path>
+                <path d="M24 33v10"></path>
+                <path d="M5 24h10"></path>
+                <path d="M33 24h10"></path>
+                <path d="M14 14l7 7"></path>
+                <path d="M27 27l7 7"></path>
+                <path d="M34 14l-7 7"></path>
+                <path d="M21 27l-7 7"></path>
+              </svg>
+            </span>
+            <div>
+              <h2>精彩</h2>
+              <p>世界里有很多还没发现的有趣东西。</p>
+            </div>
+          </div>
+        </article>
+        <article>
+          <img
+            class="belief-strip__photo"
+            src="assets/belief-alive.png"
+            alt="雨后庭院里孩子观察植物和水滴，感受世界的回应"
+          />
+          <div class="belief-strip__body">
+            <span class="belief-strip__icon belief-strip__icon--alive" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path d="M24 40V23"></path>
+                <path d="M24 25c-8-1-13-6-15-14 9 0 15 4 15 14Z"></path>
+                <path d="M25 30c8-1 13-6 14-14-9 0-14 5-14 14Z"></path>
+              </svg>
+            </span>
+            <div>
+              <h2>有回应</h2>
+              <p>我认真观察、提问和行动，世界会给我回声。</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="controls" aria-label="小卡筛选">
+        <div class="segmented" role="group" aria-label="选择类别">
+          <button class="segment is-active" type="button" data-filter="all">全部</button>
+          <button class="segment" type="button" data-filter="safe">安全</button>
+          <button class="segment" type="button" data-filter="wonder">精彩</button>
+          <button class="segment" type="button" data-filter="alive">有回应</button>
+        </div>
+        <p class="progress" id="progressText" aria-live="polite"></p>
+      </section>
+
+      <section class="card-grid" id="cards" aria-label="二十张信念小卡"></section>
+    </main>
+
+    <dialog class="card-dialog" id="cardDialog" aria-labelledby="dialogTitle">
+      <button class="dialog-close" type="button" id="closeDialog" aria-label="关闭">×</button>
+      <div class="dialog-visual" id="dialogVisual" aria-hidden="true"></div>
+      <p class="dialog-kicker" id="dialogKicker"></p>
+      <h2 id="dialogTitle"></h2>
+      <p id="dialogLine"></p>
+      <p class="dialog-action" id="dialogAction"></p>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
