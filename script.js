@@ -6,7 +6,6 @@ const cards = [
     color: "#2f7d58",
     title: "世界大体安全",
     line: "我可以放心探索，但世界不是只围着我转。",
-    action: "看路，守规则，需要时求助。",
   },
   {
     id: 2,
@@ -15,7 +14,6 @@ const cards = [
     color: "#386fa4",
     title: "善意也有边界",
     line: "大多数人愿意友好，但我可以说“不”。",
-    action: "友好地靠近，也清楚地拒绝。",
   },
   {
     id: 3,
@@ -24,7 +22,6 @@ const cards = [
     color: "#8a5a3b",
     title: "家是可靠基地",
     line: "爸爸妈妈会爱我，也会有自己的事情。",
-    action: "需要帮助时说清楚，不用大喊。",
   },
   {
     id: 4,
@@ -33,7 +30,6 @@ const cards = [
     color: "#ba4a62",
     title: "我重要，但不是唯一",
     line: "我的感受重要，别人的感受也重要。",
-    action: "轮到别人时，认真听一听。",
   },
   {
     id: 5,
@@ -42,7 +38,6 @@ const cards = [
     color: "#2f8f9d",
     title: "事情有原因",
     line: "很多事不是“就是这样”，可以慢慢找原因。",
-    action: "多问一个“为什么”。",
   },
   {
     id: 6,
@@ -51,7 +46,6 @@ const cards = [
     color: "#e3a322",
     title: "错误是信息",
     line: "错了说明我发现了一条线索，不是我很糟糕。",
-    action: "问自己：我学到了什么？",
   },
   {
     id: 7,
@@ -60,7 +54,6 @@ const cards = [
     color: "#4f8b42",
     title: "能力会长大",
     line: "练习、方法和时间，会让本领一点点长出来。",
-    action: "挑一件小事，认真练 5 分钟。",
   },
   {
     id: 8,
@@ -69,7 +62,6 @@ const cards = [
     color: "#386fa4",
     title: "不懂可以问",
     line: "提问不是丢脸，是大脑在开灯。",
-    action: "把问题说具体。",
   },
   {
     id: 9,
@@ -78,7 +70,6 @@ const cards = [
     color: "#5b6270",
     title: "事实比面子重要",
     line: "真相能帮我们修正，面子不能解决问题。",
-    action: "先看证据，再说结论。",
   },
   {
     id: 10,
@@ -87,7 +78,6 @@ const cards = [
     color: "#a45c3c",
     title: "选择有后果",
     line: "我可以选择，也要接住选择带来的结果。",
-    action: "做决定前想一想：然后呢？",
   },
   {
     id: 11,
@@ -96,7 +86,6 @@ const cards = [
     color: "#2f7d58",
     title: "资源要取舍",
     line: "时间、钱和力气都有限，所以要学会选择。",
-    action: "先选最重要的一件。",
   },
   {
     id: 12,
@@ -105,7 +94,6 @@ const cards = [
     color: "#b1842e",
     title: "金钱是工具",
     line: "钱能帮我们做事，但不能决定一个人的价值。",
-    action: "买东西前问：它真的有用吗？",
   },
   {
     id: 13,
@@ -114,7 +102,6 @@ const cards = [
     color: "#ba4a62",
     title: "感受是真的",
     line: "别人的难过是真的，但不是所有情绪都要我负责。",
-    action: "可以关心，也可以保留空间。",
   },
   {
     id: 14,
@@ -123,7 +110,6 @@ const cards = [
     color: "#386fa4",
     title: "规则保护大家",
     line: "规则不是为了压我，是让大家能一起玩下去。",
-    action: "先明白规则，再提出改进。",
   },
   {
     id: 15,
@@ -132,7 +118,6 @@ const cards = [
     color: "#2f8f9d",
     title: "身体和情绪是信号",
     line: "累、怕、生气都在提醒我，不是敌人。",
-    action: "停一下，听听身体在说什么。",
   },
   {
     id: 16,
@@ -141,7 +126,6 @@ const cards = [
     color: "#5b6270",
     title: "注意力很宝贵",
     line: "我看哪里、想哪里，时间就流向哪里。",
-    action: "把最重要的事放在前面。",
   },
   {
     id: 17,
@@ -150,7 +134,6 @@ const cards = [
     color: "#2f8f9d",
     title: "世界比我看到的大",
     line: "我现在看到的，只是世界的一小块。",
-    action: "听一个不同人的故事。",
   },
   {
     id: 18,
@@ -159,7 +142,6 @@ const cards = [
     color: "#4f8b42",
     title: "合作更强",
     line: "很多事一起做，会比一个人硬扛更好。",
-    action: "说清楚：我负责哪一部分？",
   },
   {
     id: 19,
@@ -168,7 +150,6 @@ const cards = [
     color: "#e3a322",
     title: "好奇比表现重要",
     line: "想弄明白，比装作很厉害更有力量。",
-    action: "今天保留一个好问题。",
   },
   {
     id: 20,
@@ -177,7 +158,6 @@ const cards = [
     color: "#2f7d58",
     title: "我能爱，也能改变世界",
     line: "我可以珍惜这个世界，也可以让它变好一点。",
-    action: "做一件让周围更好的小事。",
   },
 ];
 
@@ -193,7 +173,6 @@ const dialogVisual = document.querySelector("#dialogVisual");
 const dialogKicker = document.querySelector("#dialogKicker");
 const dialogTitle = document.querySelector("#dialogTitle");
 const dialogLine = document.querySelector("#dialogLine");
-const dialogAction = document.querySelector("#dialogAction");
 const closeDialog = document.querySelector("#closeDialog");
 const progressText = document.querySelector("#progressText");
 const randomCard = document.querySelector("#randomCard");
@@ -269,7 +248,6 @@ function openCard(card) {
   dialogKicker.textContent = `${String(card.id).padStart(2, "0")} · ${categoryNames[card.category]}`;
   dialogTitle.textContent = card.title;
   dialogLine.textContent = card.line;
-  dialogAction.textContent = card.action;
 
   if (typeof dialog.showModal === "function") {
     dialog.showModal();
@@ -301,7 +279,6 @@ function renderCards() {
       <div class="card-visual">${icon(card.icon)}</div>
       <h3>${card.title}</h3>
       <p class="card-line">${card.line}</p>
-      <p class="card-action">${card.action}</p>
     `;
 
     article.addEventListener("click", () => openCard(card));
