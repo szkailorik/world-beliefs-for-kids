@@ -97,10 +97,20 @@ button:focus-visible {
 
 .topbar a {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 0 16px;
   text-decoration: none;
   font-weight: 700;
+  line-height: 1.08;
+}
+
+.topbar small,
+.segment small {
+  font-size: 0.68rem;
+  font-weight: 800;
+  opacity: 0.72;
 }
 
 .icon-button {
@@ -138,6 +148,12 @@ button:focus-visible {
   font-weight: 800;
 }
 
+.eyebrow span {
+  margin-left: 8px;
+  font-size: 0.78em;
+  opacity: 0.76;
+}
+
 h1,
 h2,
 h3,
@@ -147,17 +163,33 @@ p {
 
 h1 {
   max-width: 9em;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   font-size: clamp(3rem, 8vw, 5.8rem);
   line-height: 0.98;
   letter-spacing: 0;
 }
 
+.hero__title-en {
+  max-width: 560px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1.28rem, 2.4vw, 1.72rem);
+  font-weight: 800;
+}
+
 .hero__lead {
   max-width: 560px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   font-size: clamp(1.12rem, 2vw, 1.42rem);
   font-weight: 700;
+}
+
+.hero__lead-en {
+  max-width: 610px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(0.98rem, 1.6vw, 1.16rem);
+  font-weight: 650;
 }
 
 main {
@@ -235,14 +267,29 @@ main {
 }
 
 .belief-strip h2 {
-  margin-bottom: 0;
+  margin-bottom: 2px;
   font-size: 1.35rem;
 }
 
 .belief-strip p {
-  margin-bottom: 0;
+  margin-bottom: 4px;
   color: var(--muted);
   font-weight: 650;
+}
+
+.belief-strip__en,
+.belief-strip__line-en {
+  color: color-mix(in srgb, var(--muted), white 16%);
+}
+
+.belief-strip__en {
+  font-size: 0.85rem;
+  font-weight: 850;
+}
+
+.belief-strip__line-en {
+  font-size: 0.82rem;
+  line-height: 1.35;
 }
 
 .controls {
@@ -269,6 +316,11 @@ main {
   color: var(--ink);
   cursor: pointer;
   font-weight: 800;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.05;
   transition:
     background 180ms ease,
     border-color 180ms ease,
@@ -366,7 +418,7 @@ main {
 
 .belief-card {
   position: relative;
-  min-height: 280px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -884,18 +936,38 @@ main {
 .belief-card h3 {
   position: relative;
   z-index: 2;
-  margin-bottom: 0;
+  margin-bottom: -8px;
   font-size: 1.2rem;
   line-height: 1.22;
+}
+
+.card-title-en {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--card-color), black 18%);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.28;
 }
 
 .card-line {
   position: relative;
   z-index: 2;
-  margin-bottom: 0;
+  margin-bottom: -6px;
   color: #394750;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.card-line-en {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0;
+  color: color-mix(in srgb, #394750, white 20%);
+  font-size: 0.83rem;
+  font-weight: 650;
+  line-height: 1.35;
 }
 
 .done-button {
@@ -988,7 +1060,7 @@ main {
 }
 
 .card-dialog h2 {
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   font-size: clamp(1.7rem, 6vw, 2.35rem);
   line-height: 1.08;
 }
@@ -996,6 +1068,23 @@ main {
 .card-dialog p {
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+.dialog-title-en {
+  margin-bottom: 16px;
+  color: color-mix(in srgb, var(--dialog-color, var(--leaf)), black 16%);
+  font-size: 1rem;
+  font-weight: 850;
+  line-height: 1.32;
+}
+
+.dialog-line-en {
+  margin-top: -6px;
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--muted), white 8%);
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.42;
 }
 
 .dialog-actions {
@@ -1129,7 +1218,7 @@ main {
   }
 
   .belief-card {
-    min-height: 228px;
+    min-height: 330px;
   }
 
   .card-dialog {

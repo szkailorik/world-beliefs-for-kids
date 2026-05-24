@@ -6,7 +6,9 @@ const cards = [
     scene: "shelter",
     color: "#2f7d58",
     title: "世界大体安全",
+    titleEn: "The world is mostly safe",
     line: "我可以放心探索，但世界不是只围着我转。",
+    lineEn: "I can explore with trust, but the world does not revolve around me.",
   },
   {
     id: 2,
@@ -15,7 +17,9 @@ const cards = [
     scene: "boundary",
     color: "#386fa4",
     title: "善意也有边界",
+    titleEn: "Kindness has boundaries",
     line: "大多数人愿意友好，但我可以说“不”。",
+    lineEn: "Most people want to be kind, and I can still say no.",
   },
   {
     id: 3,
@@ -24,7 +28,9 @@ const cards = [
     scene: "home",
     color: "#8a5a3b",
     title: "家是可靠基地",
+    titleEn: "Home is a steady base",
     line: "爸爸妈妈会爱我，也会有自己的事情。",
+    lineEn: "Mom and Dad love me, and they have their own things to do.",
   },
   {
     id: 4,
@@ -33,7 +39,9 @@ const cards = [
     scene: "important",
     color: "#ba4a62",
     title: "我重要，但不是唯一",
+    titleEn: "I matter, but I am not the only one",
     line: "我的感受重要，别人的感受也重要。",
+    lineEn: "My feelings matter, and other people's feelings matter too.",
   },
   {
     id: 5,
@@ -42,7 +50,9 @@ const cards = [
     scene: "cause",
     color: "#2f8f9d",
     title: "事情有原因",
+    titleEn: "Things have reasons",
     line: "很多事不是“就是这样”，可以慢慢找原因。",
+    lineEn: "Many things are not just because; we can look for reasons slowly.",
   },
   {
     id: 6,
@@ -51,7 +61,9 @@ const cards = [
     scene: "clue",
     color: "#e3a322",
     title: "错误是信息",
+    titleEn: "Mistakes are information",
     line: "错了说明我发现了一条线索，不是我很糟糕。",
+    lineEn: "A mistake means I found a clue, not that I am bad.",
   },
   {
     id: 7,
@@ -60,7 +72,9 @@ const cards = [
     scene: "growth",
     color: "#4f8b42",
     title: "能力会长大",
+    titleEn: "Abilities can grow",
     line: "练习、方法和时间，会让本领一点点长出来。",
+    lineEn: "Practice, good methods, and time help skills grow bit by bit.",
   },
   {
     id: 8,
@@ -69,7 +83,9 @@ const cards = [
     scene: "question",
     color: "#386fa4",
     title: "不懂可以问",
+    titleEn: "It is okay to ask",
     line: "提问不是丢脸，是大脑在开灯。",
+    lineEn: "Asking is not shameful; it turns the light on in my brain.",
   },
   {
     id: 9,
@@ -78,7 +94,9 @@ const cards = [
     scene: "truth",
     color: "#5b6270",
     title: "事实比面子重要",
+    titleEn: "Facts matter more than pride",
     line: "真相能帮我们修正，面子不能解决问题。",
+    lineEn: "Truth helps us adjust; pride cannot solve the problem.",
   },
   {
     id: 10,
@@ -87,7 +105,9 @@ const cards = [
     scene: "choice",
     color: "#a45c3c",
     title: "选择有后果",
+    titleEn: "Choices have consequences",
     line: "我可以选择，也要接住选择带来的结果。",
+    lineEn: "I can choose, and I also need to accept what follows.",
   },
   {
     id: 11,
@@ -96,7 +116,9 @@ const cards = [
     scene: "resource",
     color: "#2f7d58",
     title: "资源要取舍",
+    titleEn: "Resources need trade-offs",
     line: "时间、钱和力气都有限，所以要学会选择。",
+    lineEn: "Time, money, and energy are limited, so I learn to choose.",
   },
   {
     id: 12,
@@ -105,7 +127,9 @@ const cards = [
     scene: "money",
     color: "#b1842e",
     title: "金钱是工具",
+    titleEn: "Money is a tool",
     line: "钱能帮我们做事，但不能决定一个人的价值。",
+    lineEn: "Money helps us do things, but it does not decide a person's worth.",
   },
   {
     id: 13,
@@ -114,7 +138,9 @@ const cards = [
     scene: "feeling",
     color: "#ba4a62",
     title: "感受是真的",
+    titleEn: "Feelings are real",
     line: "别人的难过是真的，但不是所有情绪都要我负责。",
+    lineEn: "Other people's sadness is real, but I am not responsible for every feeling.",
   },
   {
     id: 14,
@@ -123,7 +149,9 @@ const cards = [
     scene: "rules",
     color: "#386fa4",
     title: "规则保护大家",
+    titleEn: "Rules protect everyone",
     line: "规则不是为了压我，是让大家能一起玩下去。",
+    lineEn: "Rules are not here to press me down; they help everyone keep playing together.",
   },
   {
     id: 15,
@@ -132,7 +160,9 @@ const cards = [
     scene: "signal",
     color: "#2f8f9d",
     title: "身体和情绪是信号",
+    titleEn: "Body and feelings are signals",
     line: "累、怕、生气都在提醒我，不是敌人。",
+    lineEn: "Tired, scared, and angry are reminders, not enemies.",
   },
   {
     id: 16,
@@ -141,7 +171,9 @@ const cards = [
     scene: "focus",
     color: "#5b6270",
     title: "注意力很宝贵",
+    titleEn: "Attention is precious",
     line: "我看哪里、想哪里，时间就流向哪里。",
+    lineEn: "Where I look and think is where my time flows.",
   },
   {
     id: 17,
@@ -150,7 +182,9 @@ const cards = [
     scene: "horizon",
     color: "#2f8f9d",
     title: "世界比我看到的大",
+    titleEn: "The world is bigger than what I see",
     line: "我现在看到的，只是世界的一小块。",
+    lineEn: "What I see now is only a small piece of the world.",
   },
   {
     id: 18,
@@ -159,7 +193,9 @@ const cards = [
     scene: "together",
     color: "#4f8b42",
     title: "合作更强",
+    titleEn: "Cooperation is stronger",
     line: "很多事一起做，会比一个人硬扛更好。",
+    lineEn: "Many things go better together than by pushing alone.",
   },
   {
     id: 19,
@@ -168,7 +204,9 @@ const cards = [
     scene: "curiosity",
     color: "#e3a322",
     title: "好奇比表现重要",
+    titleEn: "Curiosity matters more than performance",
     line: "想弄明白，比装作很厉害更有力量。",
+    lineEn: "Wanting to understand is more powerful than pretending to be great.",
   },
   {
     id: 20,
@@ -177,14 +215,16 @@ const cards = [
     scene: "change",
     color: "#2f7d58",
     title: "我能爱，也能改变世界",
+    titleEn: "I can love and change the world",
     line: "我可以珍惜这个世界，也可以让它变好一点。",
+    lineEn: "I can care for the world and make it a little better.",
   },
 ];
 
 const categoryNames = {
-  safe: "安全",
-  wonder: "精彩",
-  alive: "有回应",
+  safe: "安全 / Safe",
+  wonder: "精彩 / Wonder",
+  alive: "有回应 / Responsive",
 };
 
 const grid = document.querySelector("#cards");
@@ -192,7 +232,9 @@ const dialog = document.querySelector("#cardDialog");
 const dialogVisual = document.querySelector("#dialogVisual");
 const dialogKicker = document.querySelector("#dialogKicker");
 const dialogTitle = document.querySelector("#dialogTitle");
+const dialogTitleEn = document.querySelector("#dialogTitleEn");
 const dialogLine = document.querySelector("#dialogLine");
+const dialogLineEn = document.querySelector("#dialogLineEn");
 const closeDialog = document.querySelector("#closeDialog");
 const progressText = document.querySelector("#progressText");
 const progressFill = document.querySelector("#progressFill");
@@ -308,7 +350,7 @@ function toggleDone(card) {
 
 function updateProgress() {
   const percent = Math.round((done.size / cards.length) * 100);
-  progressText.textContent = `已讲 ${done.size} / ${cards.length} 张`;
+  progressText.textContent = `已讲 ${done.size} / ${cards.length} 张 · ${done.size} / ${cards.length} discussed`;
   progressFill.style.width = `${percent}%`;
   resetDone.disabled = done.size === 0;
 }
@@ -321,7 +363,9 @@ function openCard(card) {
   dialogVisual.innerHTML = `<div class="card-visual">${icon(card.icon)}</div>`;
   dialogKicker.textContent = `${String(card.id).padStart(2, "0")} · ${categoryNames[card.category]}`;
   dialogTitle.textContent = card.title;
+  dialogTitleEn.textContent = card.titleEn;
   dialogLine.textContent = card.line;
+  dialogLineEn.textContent = card.lineEn;
   updateDialogDone();
 
   if (typeof dialog.showModal === "function" && !dialog.open) {
@@ -367,7 +411,9 @@ function renderCards() {
         <div class="card-visual">${icon(card.icon)}</div>
       </div>
       <h3>${card.title}</h3>
+      <p class="card-title-en">${card.titleEn}</p>
       <p class="card-line">${card.line}</p>
+      <p class="card-line-en">${card.lineEn}</p>
     `;
 
     article.querySelector(".open-card-button").addEventListener("click", () => openCard(card));
