@@ -138,19 +138,29 @@
       </section>
 
       <section class="controls" aria-label="小卡筛选">
-        <div class="segmented" role="group" aria-label="选择类别">
-          <button class="segment is-active" type="button" data-filter="all">
-            <span>全部</span><small>All</small>
-          </button>
-          <button class="segment" type="button" data-filter="safe">
-            <span>安全</span><small>Safe</small>
-          </button>
-          <button class="segment" type="button" data-filter="wonder">
-            <span>精彩</span><small>Wonder</small>
-          </button>
-          <button class="segment" type="button" data-filter="alive">
-            <span>有回应</span><small>Responsive</small>
-          </button>
+        <div class="control-stack">
+          <div class="segmented" role="group" aria-label="选择类别">
+            <button class="segment is-active" type="button" data-filter="all">
+              <span>全部</span><small>All</small>
+            </button>
+            <button class="segment" type="button" data-filter="safe">
+              <span>安全</span><small>Safe</small>
+            </button>
+            <button class="segment" type="button" data-filter="wonder">
+              <span>精彩</span><small>Wonder</small>
+            </button>
+            <button class="segment" type="button" data-filter="alive">
+              <span>有回应</span><small>Responsive</small>
+            </button>
+          </div>
+          <div class="segmented segmented--language" role="group" aria-label="阅读模式">
+            <button class="segment is-active" type="button" data-language="bilingual">
+              <span>中英</span><small>Bilingual</small>
+            </button>
+            <button class="segment" type="button" data-language="zh">
+              <span>中文</span><small>Chinese</small>
+            </button>
+          </div>
         </div>
         <div class="progress-panel" aria-label="讲卡进度">
           <div class="progress-copy">

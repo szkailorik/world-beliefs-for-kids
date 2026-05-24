@@ -301,10 +301,22 @@ main {
   gap: 14px;
 }
 
+.control-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .segmented {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.segmented--language .segment {
+  min-height: 36px;
+  padding: 0 14px;
+  background: color-mix(in srgb, var(--shell), white 56%);
 }
 
 .segment {
@@ -336,6 +348,29 @@ main {
 
 .segment:active {
   transform: translateY(1px);
+}
+
+.is-chinese-only .topbar small,
+.is-chinese-only .segment small,
+.is-chinese-only .eyebrow span,
+.is-chinese-only .hero__title-en,
+.is-chinese-only .hero__lead-en,
+.is-chinese-only .belief-strip__en,
+.is-chinese-only .belief-strip__line-en,
+.is-chinese-only .card-title-en,
+.is-chinese-only .card-line-en,
+.is-chinese-only .dialog-title-en,
+.is-chinese-only .dialog-line-en {
+  display: none;
+}
+
+.is-chinese-only .belief-card {
+  min-height: 280px;
+}
+
+.is-chinese-only .belief-card h3,
+.is-chinese-only .card-line {
+  margin-bottom: 0;
 }
 
 .progress-panel {
@@ -1219,6 +1254,10 @@ main {
 
   .belief-card {
     min-height: 330px;
+  }
+
+  .is-chinese-only .belief-card {
+    min-height: 260px;
   }
 
   .card-dialog {

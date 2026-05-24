@@ -243,10 +243,13 @@ const resetDone = document.querySelector("#resetDone");
 const prevCard = document.querySelector("#prevCard");
 const nextCard = document.querySelector("#nextCard");
 const dialogDone = document.querySelector("#dialogDone");
-const segments = [...document.querySelectorAll(".segment")];
+const filterSegments = [...document.querySelectorAll("[data-filter]")];
+const languageSegments = [...document.querySelectorAll("[data-language]")];
 const doneKey = "world-belief-done";
+const languageModeKey = "world-belief-language-mode";
 let done = readDone();
 let activeFilter = "all";
+let languageMode = localStorage.getItem(languageModeKey) || "bilingual";
 let currentCard = null;
 
 function icon(name) {
@@ -350,9 +353,22 @@ function toggleDone(card) {
 
 function updateProgress() {
   const percent = Math.round((done.size / cards.length) * 100);
-  progressText.textContent = `已讲 ${done.size} / ${cards.length} 张 · ${done.size} / ${cards.length} discussed`;
+  progressText.textContent =
+    languageMode === "zh"
+      ? `已讲 ${done.size} / ${cards.length} 张`
+      : `已讲 ${done.size} / ${cards.length} 张 · ${done.size} / ${cards.length} discussed`;
   progressFill.style.width = `${percent}%`;
   resetDone.disabled = done.size === 0;
+}
+
+function applyLanguageMode() {
+  document.body.classList.toggle("is-chinese-only", languageMode === "zh");
+  languageSegments.forEach((segment) => {
+    const isActive = segment.dataset.language === languageMode;
+    segment.classList.toggle("is-active", isActive);
+    segment.setAttribute("aria-pressed", String(isActive));
+  });
+  updateProgress();
 }
 
 function openCard(card) {
@@ -429,17 +445,25 @@ function renderCards() {
   updateProgress();
 }
 
-segments.forEach((segment) => {
+filterSegments.forEach((segment) => {
   segment.setAttribute("aria-pressed", String(segment.classList.contains("is-active")));
 
   segment.addEventListener("click", () => {
     activeFilter = segment.dataset.filter;
-    segments.forEach((item) => {
+    filterSegments.forEach((item) => {
       const isActive = item === segment;
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-pressed", String(isActive));
     });
     renderCards();
+  });
+});
+
+languageSegments.forEach((segment) => {
+  segment.addEventListener("click", () => {
+    languageMode = segment.dataset.language;
+    localStorage.setItem(languageModeKey, languageMode);
+    applyLanguageMode();
   });
 });
 
@@ -494,3 +518,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderCards();
+applyLanguageMode();
