@@ -175,11 +175,17 @@ const dialogTitle = document.querySelector("#dialogTitle");
 const dialogLine = document.querySelector("#dialogLine");
 const closeDialog = document.querySelector("#closeDialog");
 const progressText = document.querySelector("#progressText");
+const progressFill = document.querySelector("#progressFill");
 const randomCard = document.querySelector("#randomCard");
+const resetDone = document.querySelector("#resetDone");
+const prevCard = document.querySelector("#prevCard");
+const nextCard = document.querySelector("#nextCard");
+const dialogDone = document.querySelector("#dialogDone");
 const segments = [...document.querySelectorAll(".segment")];
 const doneKey = "world-belief-done";
-let done = new Set(JSON.parse(localStorage.getItem(doneKey) || "[]"));
+let done = readDone();
 let activeFilter = "all";
+let currentCard = null;
 
 function icon(name) {
   const icons = {
@@ -232,28 +238,83 @@ function saveDone() {
   localStorage.setItem(doneKey, JSON.stringify([...done]));
 }
 
+function readDone() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(doneKey) || "[]");
+    return new Set(saved.filter((id) => cards.some((card) => card.id === id)));
+  } catch {
+    return new Set();
+  }
+}
+
 function visibleCards() {
   return activeFilter === "all"
     ? cards
     : cards.filter((card) => card.category === activeFilter);
 }
 
+function randomPool() {
+  const pool = visibleCards();
+  const unspoken = pool.filter((card) => !done.has(card.id));
+  return unspoken.length > 0 ? unspoken : pool;
+}
+
+function cardNode(card) {
+  return document.querySelector(`.belief-card[data-id="${card.id}"]`);
+}
+
+function updateDialogDone() {
+  if (!currentCard) {
+    return;
+  }
+
+  const isDone = done.has(currentCard.id);
+  dialogDone.classList.toggle("is-done", isDone);
+  dialogDone.setAttribute("aria-pressed", String(isDone));
+  dialogDone.setAttribute("aria-label", isDone ? "取消标记已讲" : "标记已讲");
+}
+
+function toggleDone(card) {
+  if (done.has(card.id)) {
+    done.delete(card.id);
+  } else {
+    done.add(card.id);
+  }
+
+  saveDone();
+  renderCards();
+  updateDialogDone();
+}
+
 function updateProgress() {
+  const percent = Math.round((done.size / cards.length) * 100);
   progressText.textContent = `已讲 ${done.size} / ${cards.length} 张`;
+  progressFill.style.width = `${percent}%`;
+  resetDone.disabled = done.size === 0;
 }
 
 function openCard(card) {
+  currentCard = card;
   dialog.style.setProperty("--dialog-color", card.color);
   dialogVisual.innerHTML = icon(card.icon);
   dialogKicker.textContent = `${String(card.id).padStart(2, "0")} · ${categoryNames[card.category]}`;
   dialogTitle.textContent = card.title;
   dialogLine.textContent = card.line;
+  updateDialogDone();
 
-  if (typeof dialog.showModal === "function") {
+  if (typeof dialog.showModal === "function" && !dialog.open) {
     dialog.showModal();
-  } else {
+  } else if (!dialog.open) {
     dialog.setAttribute("open", "");
   }
+}
+
+function moveDialog(offset) {
+  const pool = visibleCards();
+  const index = pool.findIndex((card) => card.id === currentCard?.id);
+  const baseIndex = index === -1 ? 0 : index;
+  const nextIndex = (baseIndex + offset + pool.length) % pool.length;
+  openCard(pool[nextIndex]);
 }
 
 function renderCards() {
@@ -262,17 +323,21 @@ function renderCards() {
   for (const card of cards) {
     const article = document.createElement("article");
     article.className = `belief-card ${done.has(card.id) ? "is-done" : ""}`;
+    article.dataset.id = card.id;
     article.dataset.category = card.category;
     article.style.setProperty("--card-color", card.color);
-    article.tabIndex = 0;
-    article.setAttribute("role", "button");
-    article.setAttribute("aria-label", `打开小卡：${card.title}`);
     article.hidden = activeFilter !== "all" && activeFilter !== card.category;
 
     article.innerHTML = `
+      <button class="open-card-button" type="button" aria-label="打开小卡：${card.title}"></button>
       <div class="card-top">
         <span class="card-number">${String(card.id).padStart(2, "0")}</span>
-        <button class="done-button" type="button" aria-label="标记第 ${card.id} 张已讲">
+        <button
+          class="done-button"
+          type="button"
+          aria-pressed="${done.has(card.id)}"
+          aria-label="${done.has(card.id) ? `取消第 ${card.id} 张已讲` : `标记第 ${card.id} 张已讲`}"
+        >
           ${done.has(card.id) ? "✓" : ""}
         </button>
       </div>
@@ -281,24 +346,11 @@ function renderCards() {
       <p class="card-line">${card.line}</p>
     `;
 
-    article.addEventListener("click", () => openCard(card));
-    article.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openCard(card);
-      }
-    });
+    article.querySelector(".open-card-button").addEventListener("click", () => openCard(card));
 
     article.querySelector(".done-button").addEventListener("click", (event) => {
       event.stopPropagation();
-      if (done.has(card.id)) {
-        done.delete(card.id);
-      } else {
-        done.add(card.id);
-      }
-      saveDone();
-      updateProgress();
-      renderCards();
+      toggleDone(card);
     });
 
     grid.append(article);
@@ -308,27 +360,66 @@ function renderCards() {
 }
 
 segments.forEach((segment) => {
+  segment.setAttribute("aria-pressed", String(segment.classList.contains("is-active")));
+
   segment.addEventListener("click", () => {
     activeFilter = segment.dataset.filter;
-    segments.forEach((item) => item.classList.toggle("is-active", item === segment));
+    segments.forEach((item) => {
+      const isActive = item === segment;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
     renderCards();
   });
 });
 
 randomCard.addEventListener("click", () => {
-  const pool = visibleCards();
+  const pool = randomPool();
   const card = pool[Math.floor(Math.random() * pool.length)];
-  const node = [...document.querySelectorAll(".belief-card")].find(
-    (item) => Number(item.querySelector(".card-number").textContent) === card.id,
-  );
+  const node = cardNode(card);
   node?.scrollIntoView({ behavior: "smooth", block: "center" });
   setTimeout(() => openCard(card), 360);
+});
+
+resetDone.addEventListener("click", () => {
+  if (done.size === 0) {
+    return;
+  }
+
+  done.clear();
+  saveDone();
+  renderCards();
+  updateDialogDone();
+});
+
+prevCard.addEventListener("click", () => moveDialog(-1));
+nextCard.addEventListener("click", () => moveDialog(1));
+dialogDone.addEventListener("click", () => {
+  if (currentCard) {
+    toggleDone(currentCard);
+  }
 });
 
 closeDialog.addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) {
     dialog.close();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!dialog.open) {
+    return;
+  }
+
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    moveDialog(-1);
+  }
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    moveDialog(1);
   }
 });
 

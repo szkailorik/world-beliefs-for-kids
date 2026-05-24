@@ -41,6 +41,12 @@ button {
   font: inherit;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(184, 135, 59, 0.78);
+  outline-offset: 3px;
+}
+
 .hero {
   position: relative;
   min-height: clamp(560px, 86vh, 760px);
@@ -263,6 +269,11 @@ main {
   color: var(--ink);
   cursor: pointer;
   font-weight: 800;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .segment.is-active {
@@ -271,11 +282,78 @@ main {
   color: #ffffff;
 }
 
+.segment:active {
+  transform: translateY(1px);
+}
+
+.progress-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: min(330px, 42vw);
+}
+
+.progress-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .progress {
-  margin-bottom: 0;
+  margin-bottom: 8px;
   color: var(--muted);
   font-weight: 800;
   white-space: nowrap;
+}
+
+.progress-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--line), white 40%);
+}
+
+.progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--leaf), var(--sun));
+  transition: width 240ms ease;
+}
+
+.reset-button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fffdf8;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.reset-button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reset-button:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+.reset-button:not(:disabled):active {
+  transform: rotate(-12deg) translateY(1px);
 }
 
 .card-grid {
@@ -301,13 +379,52 @@ main {
   box-shadow: 0 12px 26px rgba(36, 49, 58, 0.08);
   cursor: pointer;
   overflow: hidden;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .belief-card[hidden] {
   display: none;
 }
 
+.open-card-button {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.open-card-button:focus-visible {
+  outline-offset: -4px;
+}
+
+.belief-card:hover {
+  box-shadow: 0 18px 34px rgba(36, 49, 58, 0.12);
+  transform: translateY(-2px);
+}
+
+.belief-card.is-done {
+  border-color: color-mix(in srgb, var(--card-color), black 12%);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--card-color), white 58%),
+    0 12px 26px rgba(36, 49, 58, 0.08);
+}
+
+.belief-card.is-done .card-visual {
+  background: color-mix(in srgb, var(--card-color), white 76%);
+}
+
 .card-top {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -327,6 +444,8 @@ main {
 }
 
 .done-button {
+  display: grid;
+  place-items: center;
   width: 36px;
   aspect-ratio: 1;
   border: 1px solid color-mix(in srgb, var(--card-color), white 35%);
@@ -335,6 +454,11 @@ main {
   color: color-mix(in srgb, var(--card-color), black 26%);
   cursor: pointer;
   font-weight: 900;
+  line-height: 1;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .belief-card.is-done .done-button {
@@ -342,7 +466,13 @@ main {
   color: #ffffff;
 }
 
+.done-button:active {
+  transform: scale(0.94);
+}
+
 .card-visual {
+  position: relative;
+  z-index: 2;
   display: grid;
   place-items: center;
   width: 88px;
@@ -354,6 +484,7 @@ main {
   box-shadow:
     inset 0 -10px 0 rgba(255, 255, 255, 0.32),
     0 12px 28px rgba(31, 37, 42, 0.08);
+  transition: background 180ms ease;
 }
 
 .card-visual svg,
@@ -368,12 +499,16 @@ main {
 }
 
 .belief-card h3 {
+  position: relative;
+  z-index: 2;
   margin-bottom: 0;
   font-size: 1.2rem;
   line-height: 1.22;
 }
 
 .card-line {
+  position: relative;
+  z-index: 2;
   margin-bottom: 0;
   color: #394750;
   font-size: 1rem;
@@ -382,7 +517,7 @@ main {
 
 .done-button {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .card-dialog {
@@ -451,6 +586,59 @@ main {
   font-weight: 700;
 }
 
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--dialog-color, var(--leaf)), white 70%);
+}
+
+.dialog-step,
+.dialog-done {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--dialog-color, var(--leaf)), white 55%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: color-mix(in srgb, var(--dialog-color, var(--leaf)), black 20%);
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.dialog-done {
+  width: 54px;
+  background: color-mix(in srgb, var(--dialog-color, var(--leaf)), white 76%);
+}
+
+.dialog-done.is-done {
+  background: color-mix(in srgb, var(--dialog-color, var(--leaf)), black 8%);
+  color: #ffffff;
+}
+
+.dialog-step svg,
+.dialog-done svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dialog-step:active,
+.dialog-done:active {
+  transform: scale(0.94);
+}
+
 @media (max-width: 960px) {
   .card-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -484,6 +672,10 @@ main {
   .controls {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .progress-panel {
+    width: 100%;
   }
 
   .progress {

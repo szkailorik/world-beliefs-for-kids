@@ -7,6 +7,7 @@
       name="description"
       content="给 7-8 岁小朋友看的原始世界信念图文小卡。"
     />
+    <meta name="theme-color" content="#24313a" />
     <title>我怎样看世界</title>
     <link rel="preload" href="assets/world-beliefs-hero.jpg" as="image" />
     <link rel="stylesheet" href="styles.css" />
@@ -17,6 +18,10 @@
         class="hero__image"
         src="assets/world-beliefs-hero.jpg"
         alt="一个小小探索者站在山脊上望向广阔世界"
+        width="1672"
+        height="941"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="hero__shade"></div>
       <nav class="topbar" aria-label="页面导航">
@@ -48,6 +53,10 @@
             class="belief-strip__photo"
             src="assets/belief-safe.jpg"
             alt="小小探索者走过通向远方的桥"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
           <div class="belief-strip__body">
             <span class="belief-strip__icon belief-strip__icon--safe" aria-hidden="true">
@@ -67,6 +76,10 @@
             class="belief-strip__photo"
             src="assets/belief-wonder.jpg"
             alt="小小探索者在开阔高地望向壮丽世界"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
           <div class="belief-strip__body">
             <span class="belief-strip__icon belief-strip__icon--wonder" aria-hidden="true">
@@ -92,6 +105,10 @@
             class="belief-strip__photo"
             src="assets/belief-alive.jpg"
             alt="小小探索者在雨后森林里观察流动的水和植物"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
           />
           <div class="belief-strip__body">
             <span class="belief-strip__icon belief-strip__icon--alive" aria-hidden="true">
@@ -116,7 +133,20 @@
           <button class="segment" type="button" data-filter="wonder">精彩</button>
           <button class="segment" type="button" data-filter="alive">有回应</button>
         </div>
-        <p class="progress" id="progressText" aria-live="polite"></p>
+        <div class="progress-panel" aria-label="讲卡进度">
+          <div class="progress-copy">
+            <p class="progress" id="progressText" aria-live="polite"></p>
+            <div class="progress-track" aria-hidden="true">
+              <span id="progressFill"></span>
+            </div>
+          </div>
+          <button class="reset-button" id="resetDone" type="button" aria-label="清空已讲进度">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M4.5 9.5a8 8 0 1 1 1.9 8.3"></path>
+              <path d="M4 5.5v4h4"></path>
+            </svg>
+          </button>
+        </div>
       </section>
 
       <section class="card-grid" id="cards" aria-label="二十张信念小卡"></section>
@@ -128,6 +158,23 @@
       <p class="dialog-kicker" id="dialogKicker"></p>
       <h2 id="dialogTitle"></h2>
       <p id="dialogLine"></p>
+      <div class="dialog-actions" aria-label="小卡操作">
+        <button class="dialog-step" id="prevCard" type="button" aria-label="上一张">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+        </button>
+        <button class="dialog-done" id="dialogDone" type="button" aria-label="标记已讲">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m5 12.5 4.3 4.3L19 7"></path>
+          </svg>
+        </button>
+        <button class="dialog-step" id="nextCard" type="button" aria-label="下一张">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m9 5 7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
     </dialog>
 
     <script src="script.js"></script>
