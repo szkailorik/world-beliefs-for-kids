@@ -366,16 +366,14 @@ main {
 
 .belief-card {
   position: relative;
-  min-height: 248px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 16px;
   border: 1px solid color-mix(in srgb, var(--card-color), white 64%);
   border-radius: 8px;
-  background:
-    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--card-color), white 80%), transparent 30%),
-    linear-gradient(180deg, #fffdf8, color-mix(in srgb, var(--card-color), white 91%));
+  background: linear-gradient(180deg, #fffdf8, color-mix(in srgb, var(--card-color), white 91%));
   box-shadow: 0 12px 26px rgba(36, 49, 58, 0.08);
   cursor: pointer;
   overflow: hidden;
@@ -392,7 +390,7 @@ main {
 .open-card-button {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -422,9 +420,16 @@ main {
   background: color-mix(in srgb, var(--card-color), white 76%);
 }
 
+.belief-card.is-done .card-scene {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 -22px 36px rgba(255, 255, 255, 0.18),
+    0 13px 25px rgba(31, 37, 42, 0.09);
+}
+
 .card-top {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -470,21 +475,399 @@ main {
   transform: scale(0.94);
 }
 
-.card-visual {
+.card-scene {
   position: relative;
   z-index: 2;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, var(--scene-sky, #dce8e3) 0 58%, var(--scene-ground, #cad6c3) 58% 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.38),
+    inset 0 -22px 36px rgba(255, 255, 255, 0.16),
+    0 13px 25px rgba(31, 37, 42, 0.07);
+}
+
+.card-scene::before,
+.card-scene::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.card-scene::before {
+  left: -18%;
+  right: -18%;
+  bottom: -38px;
+  height: 86px;
+  border-radius: 50% 50% 0 0;
+  background: var(--scene-ridge, rgba(90, 119, 92, 0.36));
+  opacity: 0.88;
+  z-index: -2;
+}
+
+.card-scene::after {
+  z-index: -1;
+}
+
+.card-scene .card-visual {
   display: grid;
   place-items: center;
-  width: 88px;
+  width: 58px;
   aspect-ratio: 1;
-  margin: 4px 0;
+  margin: 0;
   border: 2px solid rgba(255, 255, 255, 0.78);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.56);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
   box-shadow:
     inset 0 -10px 0 rgba(255, 255, 255, 0.32),
     0 12px 28px rgba(31, 37, 42, 0.08);
   transition: background 180ms ease;
+  backdrop-filter: blur(8px);
+}
+
+.card-scene .card-visual svg {
+  width: 38px;
+  height: 38px;
+}
+
+.card-scene--shelter {
+  --scene-sky: #dcebe4;
+  --scene-ground: #b9cdbb;
+  --scene-ridge: #789c82;
+}
+
+.card-scene--shelter::after {
+  right: 16px;
+  bottom: 19px;
+  width: 78px;
+  height: 34px;
+  border-top: 4px solid rgba(255, 255, 255, 0.58);
+  border-bottom: 4px solid rgba(54, 90, 66, 0.18);
+  transform: skewX(-18deg);
+}
+
+.card-scene--boundary {
+  --scene-sky: #dbe7ee;
+  --scene-ground: #bfd0dc;
+  --scene-ridge: #6d8ba1;
+}
+
+.card-scene--boundary::after {
+  right: 32px;
+  top: 16px;
+  width: 54px;
+  height: 60px;
+  border-left: 4px solid rgba(46, 83, 114, 0.28);
+  border-right: 4px solid rgba(255, 255, 255, 0.42);
+  transform: rotate(14deg);
+}
+
+.card-scene--home {
+  --scene-sky: #eadfd3;
+  --scene-ground: #d2b89b;
+  --scene-ridge: #977456;
+}
+
+.card-scene--home::after {
+  right: 28px;
+  bottom: 24px;
+  width: 50px;
+  height: 43px;
+  background: rgba(100, 68, 47, 0.28);
+  clip-path: polygon(50% 0, 100% 40%, 100% 100%, 0 100%, 0 40%);
+}
+
+.card-scene--important {
+  --scene-sky: #eadce1;
+  --scene-ground: #d6b8c0;
+  --scene-ridge: #b87886;
+}
+
+.card-scene--important::after {
+  right: 31px;
+  bottom: 27px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(125, 55, 70, 0.28);
+  box-shadow:
+    -36px 12px 0 -4px rgba(255, 255, 255, 0.42),
+    35px 9px 0 -5px rgba(125, 55, 70, 0.18);
+}
+
+.card-scene--cause {
+  --scene-sky: #d9eef0;
+  --scene-ground: #b9d5d7;
+  --scene-ridge: #70a6ac;
+  background:
+    linear-gradient(134deg, transparent 44%, rgba(35, 105, 115, 0.2) 44% 47%, transparent 47%),
+    linear-gradient(180deg, var(--scene-sky) 0 58%, var(--scene-ground) 58% 100%);
+}
+
+.card-scene--cause::after {
+  right: 28px;
+  top: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(41, 119, 130, 0.28);
+  box-shadow:
+    -48px 34px 0 -2px rgba(255, 255, 255, 0.42),
+    22px 40px 0 -3px rgba(41, 119, 130, 0.18);
+}
+
+.card-scene--clue {
+  --scene-sky: #f0e3be;
+  --scene-ground: #d7c28a;
+  --scene-ridge: #b38b3b;
+}
+
+.card-scene--clue::after {
+  right: 24px;
+  bottom: 18px;
+  width: 86px;
+  height: 48px;
+  border: 3px dashed rgba(112, 82, 26, 0.26);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0 32px 0 0;
+}
+
+.card-scene--growth {
+  --scene-sky: #dce9d8;
+  --scene-ground: #b8cfaa;
+  --scene-ridge: #74a064;
+}
+
+.card-scene--growth::after {
+  right: 36px;
+  bottom: 22px;
+  width: 46px;
+  height: 64px;
+  background: rgba(55, 105, 48, 0.26);
+  clip-path: polygon(47% 100%, 47% 45%, 10% 28%, 43% 30%, 47% 0, 55% 32%, 90% 18%, 61% 48%, 61% 100%);
+}
+
+.card-scene--question {
+  --scene-sky: #dbe7ee;
+  --scene-ground: #b9cbd8;
+  --scene-ridge: #6d88a0;
+}
+
+.card-scene--question::after {
+  right: 28px;
+  bottom: 19px;
+  width: 74px;
+  height: 58px;
+  border: 4px solid rgba(51, 84, 114, 0.22);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+}
+
+.card-scene--truth {
+  --scene-sky: #e4e6e9;
+  --scene-ground: #c6cbd1;
+  --scene-ridge: #808995;
+}
+
+.card-scene--truth::after {
+  right: 22px;
+  top: 18px;
+  width: 90px;
+  height: 54px;
+  background:
+    linear-gradient(90deg, transparent 45%, rgba(70, 77, 88, 0.28) 45% 50%, transparent 50%),
+    linear-gradient(0deg, transparent 48%, rgba(255, 255, 255, 0.48) 48% 54%, transparent 54%);
+  clip-path: polygon(50% 0, 84% 62%, 65% 62%, 50% 35%, 35% 62%, 16% 62%);
+}
+
+.card-scene--choice {
+  --scene-sky: #eadfd7;
+  --scene-ground: #d1b39d;
+  --scene-ridge: #ad7658;
+}
+
+.card-scene--choice::after {
+  right: 18px;
+  bottom: 14px;
+  width: 90px;
+  height: 70px;
+  background:
+    linear-gradient(148deg, transparent 43%, rgba(255, 255, 255, 0.44) 43% 50%, transparent 50%),
+    linear-gradient(32deg, transparent 48%, rgba(91, 57, 38, 0.2) 48% 55%, transparent 55%);
+}
+
+.card-scene--resource {
+  --scene-sky: #dbe9df;
+  --scene-ground: #c2d5bb;
+  --scene-ridge: #7ca16f;
+}
+
+.card-scene--resource::after {
+  right: 22px;
+  bottom: 20px;
+  width: 92px;
+  height: 48px;
+  background:
+    linear-gradient(90deg, rgba(44, 95, 61, 0.2) 0 31%, transparent 31% 36%, rgba(255, 255, 255, 0.42) 36% 67%, transparent 67% 72%, rgba(44, 95, 61, 0.18) 72% 100%);
+  border-radius: 4px;
+}
+
+.card-scene--money {
+  --scene-sky: #f0e3bf;
+  --scene-ground: #dbc890;
+  --scene-ridge: #b9943c;
+}
+
+.card-scene--money::after {
+  right: 30px;
+  bottom: 22px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(129, 94, 28, 0.25);
+  border-radius: 50%;
+  box-shadow: -36px 17px 0 -8px rgba(255, 255, 255, 0.36);
+}
+
+.card-scene--feeling {
+  --scene-sky: #eadce1;
+  --scene-ground: #d8bbc3;
+  --scene-ridge: #bb7b87;
+}
+
+.card-scene--feeling::after {
+  right: 27px;
+  bottom: 24px;
+  width: 76px;
+  height: 54px;
+  border-left: 4px solid rgba(122, 56, 72, 0.2);
+  border-right: 4px solid rgba(255, 255, 255, 0.42);
+  border-radius: 34px;
+}
+
+.card-scene--rules {
+  --scene-sky: #dbe7ee;
+  --scene-ground: #becfdb;
+  --scene-ridge: #6d89a3;
+  background:
+    linear-gradient(90deg, transparent 23%, rgba(255, 255, 255, 0.34) 23% 25%, transparent 25% 48%, rgba(50, 83, 113, 0.16) 48% 50%, transparent 50% 73%, rgba(255, 255, 255, 0.34) 73% 75%, transparent 75%),
+    linear-gradient(180deg, var(--scene-sky) 0 58%, var(--scene-ground) 58% 100%);
+}
+
+.card-scene--rules::after {
+  right: 26px;
+  bottom: 22px;
+  width: 72px;
+  height: 46px;
+  border: 4px solid rgba(48, 78, 107, 0.22);
+  border-radius: 6px;
+}
+
+.card-scene--signal {
+  --scene-sky: #d9eef0;
+  --scene-ground: #b8d4d7;
+  --scene-ridge: #6fa6ad;
+}
+
+.card-scene--signal::after {
+  right: 18px;
+  top: 28px;
+  width: 94px;
+  height: 42px;
+  background: linear-gradient(135deg, transparent 0 21%, rgba(40, 112, 124, 0.28) 21% 26%, transparent 26% 44%, rgba(255, 255, 255, 0.46) 44% 50%, transparent 50% 68%, rgba(40, 112, 124, 0.22) 68% 74%, transparent 74%);
+}
+
+.card-scene--focus {
+  --scene-sky: #e3e6e8;
+  --scene-ground: #c4c9ce;
+  --scene-ridge: #7e8792;
+  background:
+    linear-gradient(108deg, transparent 0 45%, rgba(255, 255, 255, 0.48) 45% 56%, transparent 56%),
+    linear-gradient(180deg, var(--scene-sky) 0 58%, var(--scene-ground) 58% 100%);
+}
+
+.card-scene--focus::after {
+  right: 40px;
+  top: 27px;
+  width: 38px;
+  height: 38px;
+  border: 5px solid rgba(70, 77, 88, 0.2);
+  border-radius: 50%;
+}
+
+.card-scene--horizon {
+  --scene-sky: #d8ecef;
+  --scene-ground: #b5d3d8;
+  --scene-ridge: #6aa1aa;
+}
+
+.card-scene--horizon::after {
+  right: 20px;
+  bottom: 28px;
+  width: 96px;
+  height: 28px;
+  border-top: 4px solid rgba(255, 255, 255, 0.48);
+  border-radius: 50%;
+}
+
+.card-scene--together {
+  --scene-sky: #dce9d8;
+  --scene-ground: #bad0ad;
+  --scene-ridge: #78a066;
+}
+
+.card-scene--together::after {
+  right: 18px;
+  bottom: 14px;
+  width: 98px;
+  height: 70px;
+  background:
+    linear-gradient(145deg, transparent 42%, rgba(255, 255, 255, 0.43) 42% 50%, transparent 50%),
+    linear-gradient(35deg, transparent 44%, rgba(63, 105, 54, 0.22) 44% 51%, transparent 51%),
+    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.35) 48% 54%, transparent 54%);
+}
+
+.card-scene--curiosity {
+  --scene-sky: #f1e3bd;
+  --scene-ground: #dcc58c;
+  --scene-ridge: #b58f36;
+}
+
+.card-scene--curiosity::after {
+  right: 28px;
+  bottom: 22px;
+  width: 70px;
+  height: 70px;
+  border: 4px solid rgba(124, 89, 24, 0.22);
+  border-radius: 50%;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.card-scene--change {
+  --scene-sky: #dcebe2;
+  --scene-ground: #bdd2bb;
+  --scene-ridge: #79a06f;
+}
+
+.card-scene--change::after {
+  right: 24px;
+  bottom: 18px;
+  width: 82px;
+  height: 62px;
+  background:
+    linear-gradient(0deg, transparent 46%, rgba(255, 255, 255, 0.45) 46% 52%, transparent 52%),
+    linear-gradient(90deg, transparent 44%, rgba(56, 105, 61, 0.24) 44% 50%, transparent 50%);
+  border: 4px solid rgba(56, 105, 61, 0.18);
+  border-radius: 50%;
 }
 
 .card-visual svg,
@@ -517,7 +900,7 @@ main {
 
 .done-button {
   position: relative;
-  z-index: 3;
+  z-index: 5;
 }
 
 .card-dialog {
