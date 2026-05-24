@@ -316,7 +316,9 @@ function updateProgress() {
 function openCard(card) {
   currentCard = card;
   dialog.style.setProperty("--dialog-color", card.color);
-  dialogVisual.innerHTML = icon(card.icon);
+  dialogVisual.className = `dialog-visual card-scene card-scene--${card.scene}`;
+  dialogVisual.style.setProperty("--card-color", card.color);
+  dialogVisual.innerHTML = `<div class="card-visual">${icon(card.icon)}</div>`;
   dialogKicker.textContent = `${String(card.id).padStart(2, "0")} · ${categoryNames[card.category]}`;
   dialogTitle.textContent = card.title;
   dialogLine.textContent = card.line;

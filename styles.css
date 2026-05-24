@@ -952,6 +952,35 @@ main {
   stroke: color-mix(in srgb, var(--dialog-color, var(--leaf)), black 24%);
 }
 
+.dialog-visual.card-scene {
+  width: 100%;
+  min-height: 164px;
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 22px;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, var(--scene-sky, #dce8e3) 0 58%, var(--scene-ground, #cad6c3) 58% 100%);
+}
+
+.dialog-visual.card-scene::before {
+  bottom: -50px;
+  height: 112px;
+}
+
+.dialog-visual.card-scene .card-visual {
+  width: 82px;
+  border-radius: 24px;
+}
+
+.dialog-visual.card-scene .card-visual svg {
+  width: 54px;
+  height: 54px;
+  stroke: color-mix(in srgb, var(--card-color), black 24%);
+}
+
 .dialog-kicker {
   margin-bottom: 8px;
   color: color-mix(in srgb, var(--dialog-color, var(--leaf)), black 22%);
