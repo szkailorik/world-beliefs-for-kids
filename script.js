@@ -5,6 +5,8 @@ const cards = [
     icon: "shield",
     scene: "shelter",
     color: "#2f7d58",
+    image: "assets/card-01-safe.jpg",
+    imageAlt: "孩子站在桥边望向安全山谷",
     title: "世界大体安全",
     titleEn: "The world is mostly safe",
     line: "我可以放心探索，但世界不是只围着我转。",
@@ -16,6 +18,8 @@ const cards = [
     icon: "boundary",
     scene: "boundary",
     color: "#386fa4",
+    image: "assets/card-02-boundary.jpg",
+    imageAlt: "孩子站在灯光边界和花园门旁",
     title: "善意也有边界",
     titleEn: "Kindness has boundaries",
     line: "大多数人愿意友好，但我可以说“不”。",
@@ -27,6 +31,8 @@ const cards = [
     icon: "home",
     scene: "home",
     color: "#8a5a3b",
+    image: "assets/card-03-home.jpg",
+    imageAlt: "孩子从温暖的家望向远方山谷",
     title: "家是可靠基地",
     titleEn: "Home is a steady base",
     line: "爸爸妈妈会爱我，也会有自己的事情。",
@@ -38,6 +44,8 @@ const cards = [
     icon: "person",
     scene: "important",
     color: "#ba4a62",
+    image: "assets/card-04-important.jpg",
+    imageAlt: "孩子站在许多灯光组成的山坡上",
     title: "我重要，但不是唯一",
     titleEn: "I matter, but I am not the only one",
     line: "我的感受重要，别人的感受也重要。",
@@ -49,6 +57,8 @@ const cards = [
     icon: "cause",
     scene: "cause",
     color: "#2f8f9d",
+    image: "assets/card-05-reasons.jpg",
+    imageAlt: "孩子沿着发光脚印寻找原因",
     title: "事情有原因",
     titleEn: "Things have reasons",
     line: "很多事不是“就是这样”，可以慢慢找原因。",
@@ -60,6 +70,8 @@ const cards = [
     icon: "info",
     scene: "clue",
     color: "#e3a322",
+    image: "assets/card-06-mistakes.jpg",
+    imageAlt: "孩子在裂开的地图前发现线索",
     title: "错误是信息",
     titleEn: "Mistakes are information",
     line: "错了说明我发现了一条线索，不是我很糟糕。",
@@ -71,6 +83,8 @@ const cards = [
     icon: "growth",
     scene: "growth",
     color: "#4f8b42",
+    image: "assets/card-07-growth.jpg",
+    imageAlt: "孩子照看山路旁正在生长的藤树",
     title: "能力会长大",
     titleEn: "Abilities can grow",
     line: "练习、方法和时间，会让本领一点点长出来。",
@@ -82,6 +96,8 @@ const cards = [
     icon: "question",
     scene: "question",
     color: "#386fa4",
+    image: "assets/card-08-questions.jpg",
+    imageAlt: "孩子用灯光向远方观测台提问",
     title: "不懂可以问",
     titleEn: "It is okay to ask",
     line: "提问不是丢脸，是大脑在开灯。",
@@ -93,6 +109,8 @@ const cards = [
     icon: "scale",
     scene: "truth",
     color: "#5b6270",
+    image: "assets/card-09-facts.jpg",
+    imageAlt: "孩子用指南针和水面倒影寻找真实路线",
     title: "事实比面子重要",
     titleEn: "Facts matter more than pride",
     line: "真相能帮我们修正，面子不能解决问题。",
@@ -104,6 +122,8 @@ const cards = [
     icon: "fork",
     scene: "choice",
     color: "#a45c3c",
+    image: "assets/card-10-choices.jpg",
+    imageAlt: "孩子站在两条不同山路前选择",
     title: "选择有后果",
     titleEn: "Choices have consequences",
     line: "我可以选择，也要接住选择带来的结果。",
@@ -115,6 +135,8 @@ const cards = [
     icon: "resource",
     scene: "resource",
     color: "#2f7d58",
+    image: "assets/card-11-resources.jpg",
+    imageAlt: "孩子带着有限灯光跨过水中石阶",
     title: "资源要取舍",
     titleEn: "Resources need trade-offs",
     line: "时间、钱和力气都有限，所以要学会选择。",
@@ -126,6 +148,8 @@ const cards = [
     icon: "coin",
     scene: "money",
     color: "#b1842e",
+    image: "assets/card-12-money.jpg",
+    imageAlt: "孩子用金色钥匙启动桥梁机关",
     title: "金钱是工具",
     titleEn: "Money is a tool",
     line: "钱能帮我们做事，但不能决定一个人的价值。",
@@ -137,6 +161,8 @@ const cards = [
     icon: "heartBoundary",
     scene: "feeling",
     color: "#ba4a62",
+    image: "assets/card-13-feelings.jpg",
+    imageAlt: "孩子站在雨天与晴天山谷之间的灯线旁",
     title: "感受是真的",
     titleEn: "Feelings are real",
     line: "别人的难过是真的，但不是所有情绪都要我负责。",
@@ -148,6 +174,8 @@ const cards = [
     icon: "rules",
     scene: "rules",
     color: "#386fa4",
+    image: "assets/card-14-rules.jpg",
+    imageAlt: "孩子们在有护栏和光线规则的场地玩耍",
     title: "规则保护大家",
     titleEn: "Rules protect everyone",
     line: "规则不是为了压我，是让大家能一起玩下去。",
@@ -159,6 +187,8 @@ const cards = [
     icon: "pulse",
     scene: "signal",
     color: "#2f8f9d",
+    image: "assets/card-15-signals.jpg",
+    imageAlt: "孩子沿着脚印、风和微光识别身体信号",
     title: "身体和情绪是信号",
     titleEn: "Body and feelings are signals",
     line: "累、怕、生气都在提醒我，不是敌人。",
@@ -170,6 +200,8 @@ const cards = [
     icon: "focus",
     scene: "focus",
     color: "#5b6270",
+    image: "assets/card-16-attention.jpg",
+    imageAlt: "孩子用灯光照亮一条清晰路线",
     title: "注意力很宝贵",
     titleEn: "Attention is precious",
     line: "我看哪里、想哪里，时间就流向哪里。",
@@ -181,6 +213,8 @@ const cards = [
     icon: "globe",
     scene: "horizon",
     color: "#2f8f9d",
+    image: "assets/card-17-world.jpg",
+    imageAlt: "孩子站在山脊上眺望更大的世界",
     title: "世界比我看到的大",
     titleEn: "The world is bigger than what I see",
     line: "我现在看到的，只是世界的一小块。",
@@ -192,6 +226,8 @@ const cards = [
     icon: "hands",
     scene: "together",
     color: "#4f8b42",
+    image: "assets/card-18-cooperation.jpg",
+    imageAlt: "几个孩子一起搭建发光吊桥",
     title: "合作更强",
     titleEn: "Cooperation is stronger",
     line: "很多事一起做，会比一个人硬扛更好。",
@@ -203,6 +239,8 @@ const cards = [
     icon: "compass",
     scene: "curiosity",
     color: "#e3a322",
+    image: "assets/card-19-curiosity.jpg",
+    imageAlt: "孩子用望远镜观察隐藏的小世界",
     title: "好奇比表现重要",
     titleEn: "Curiosity matters more than performance",
     line: "想弄明白，比装作很厉害更有力量。",
@@ -214,6 +252,8 @@ const cards = [
     icon: "worldHeart",
     scene: "change",
     color: "#2f7d58",
+    image: "assets/card-20-change.jpg",
+    imageAlt: "孩子在桥边种下一颗发光种子",
     title: "我能爱，也能改变世界",
     titleEn: "I can love and change the world",
     line: "我可以珍惜这个世界，也可以让它变好一点。",
@@ -374,9 +414,8 @@ function applyLanguageMode() {
 function openCard(card) {
   currentCard = card;
   dialog.style.setProperty("--dialog-color", card.color);
-  dialogVisual.className = `dialog-visual card-scene card-scene--${card.scene}`;
-  dialogVisual.style.setProperty("--card-color", card.color);
-  dialogVisual.innerHTML = `<div class="card-visual">${icon(card.icon)}</div>`;
+  dialogVisual.className = "dialog-visual dialog-image";
+  dialogVisual.innerHTML = `<img src="${card.image}" alt="${card.imageAlt}" decoding="async" />`;
   dialogKicker.textContent = `${String(card.id).padStart(2, "0")} · ${categoryNames[card.category]}`;
   dialogTitle.textContent = card.title;
   dialogTitleEn.textContent = card.titleEn;
@@ -423,8 +462,8 @@ function renderCards() {
           ${done.has(card.id) ? "✓" : ""}
         </button>
       </div>
-      <div class="card-scene card-scene--${card.scene}">
-        <div class="card-visual">${icon(card.icon)}</div>
+      <div class="card-image">
+        <img src="${card.image}" alt="${card.imageAlt}" loading="lazy" decoding="async" />
       </div>
       <h3>${card.title}</h3>
       <p class="card-title-en">${card.titleEn}</p>

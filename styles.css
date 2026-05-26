@@ -507,17 +507,6 @@ main {
     0 12px 26px rgba(36, 49, 58, 0.08);
 }
 
-.belief-card.is-done .card-visual {
-  background: color-mix(in srgb, var(--card-color), white 76%);
-}
-
-.belief-card.is-done .card-scene {
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
-    inset 0 -22px 36px rgba(255, 255, 255, 0.18),
-    0 13px 25px rgba(31, 37, 42, 0.09);
-}
-
 .card-top {
   position: relative;
   z-index: 4;
@@ -564,6 +553,39 @@ main {
 
 .done-button:active {
   transform: scale(0.94);
+}
+
+.card-image {
+  position: relative;
+  z-index: 2;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--card-color), white 82%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 13px 25px rgba(31, 37, 42, 0.09);
+}
+
+.card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.02);
+  transition: transform 220ms ease;
+}
+
+.belief-card:hover .card-image img {
+  transform: scale(1.025);
+}
+
+.belief-card.is-done .card-image {
+  border-color: color-mix(in srgb, var(--card-color), white 35%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    0 13px 25px rgba(31, 37, 42, 0.1);
 }
 
 .card-scene {
@@ -1055,6 +1077,26 @@ main {
   margin-bottom: 18px;
   border-radius: 32px;
   background: color-mix(in srgb, var(--dialog-color, var(--leaf)), white 78%);
+}
+
+.dialog-visual.dialog-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--dialog-color, var(--leaf)), white 78%);
+  box-shadow: 0 16px 36px rgba(31, 37, 42, 0.12);
+}
+
+.dialog-visual.dialog-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.02);
 }
 
 .dialog-visual svg {
