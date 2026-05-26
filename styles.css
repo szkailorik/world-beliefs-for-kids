@@ -139,17 +139,21 @@ button:focus-visible {
 }
 
 .eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
   width: fit-content;
+  max-width: min(100%, 680px);
   margin: 0 0 12px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: 1px solid rgba(255, 255, 255, 0.48);
-  border-radius: 999px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.2);
   font-weight: 800;
+  line-height: 1.28;
 }
 
 .eyebrow span {
-  margin-left: 8px;
   font-size: 0.78em;
   opacity: 0.76;
 }
