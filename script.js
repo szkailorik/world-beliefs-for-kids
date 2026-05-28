@@ -271,6 +271,10 @@ function visibleCards() {
     : cards.filter((card) => card.category === activeFilter);
 }
 
+function thumbImage(image) {
+  return image.replace(".jpg", "-thumb.jpg");
+}
+
 function randomPool() {
   const pool = visibleCards();
   const unspoken = pool.filter((card) => !done.has(card.id));
@@ -376,7 +380,12 @@ function renderCards() {
         </button>
       </div>
       <div class="card-image">
-        <img src="${card.image}" alt="${card.imageAlt}" loading="lazy" decoding="async" />
+        <img
+          src="${thumbImage(card.image)}"
+          alt="${card.imageAlt}"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <h3>${card.title}</h3>
       <p class="card-title-en">${card.titleEn}</p>
