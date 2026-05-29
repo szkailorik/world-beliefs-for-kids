@@ -1,0 +1,24 @@
+{
+  "name": "我怎样看世界 | How I See the World",
+  "short_name": "我怎样看世界",
+  "description": "爸爸写给 Kai 和 Lorik 的原始世界信念中英文图文小卡。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1e8",
+  "theme_color": "#24313a",
+  "icons": [
+    {
+      "src": "assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
